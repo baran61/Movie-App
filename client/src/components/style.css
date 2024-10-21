@@ -37,27 +37,77 @@
   .nav li a:hover {
     color: #555555;           
   }
-  
+
   /* Movie Listeleme için css */
+  
   .movie-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 30px; /* Kartlar arasındaki boşluk */
+    justify-content: center;
     padding: 20px;
   }
   
   .movie-card {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 200px; /* Genişlik ayarı */
-    margin: 10px;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /*  gölge efekti */
+    overflow: hidden; 
+    transition: transform 0.3s; 
+    width: 300px; /* Kart genişliği */
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05); 
   }
   
   .movie-poster {
     width: 100%;
-    border-radius: 4px;
+    height: auto; 
+    border-bottom: 2px solid #e0e0e0; /* Alt çizgi ekle */
+  }
+  
+  .movie-title {
+    font-size: 1.2em; 
+    margin: 10px 0;
+    text-align: center; 
+    color: #333; 
+  }
+  
+  .movie-rating {
+    display: flex;
+    align-items: center; /* Yıldız ve sayıların hizalanmasını ayarla */
+    justify-content: center; /* Ortala */
+    font-size: 0.7em; /* Yazı boyutu */
+    padding: 0 10px; /* Yan boşluk */
+    color: #555; /* Yazı rengi */
+  }
+  
+  .star {
+    color: gold; /* Yıldızların rengi */
+    margin: 0 2px; /* Yıldızlar arası boşluk */
+    font-size: 2em;
+  }
+  .relase-date{
+    font-size: 0.9em; 
+    margin: 10px 0;
+    text-align: center; 
+    color: #545353; 
+  }
+
+  .rating-count {
+    margin-left: 5px; /* Sayının yıldızdan sonra boşluk bırakması için */
+  }
+  
+  
+  .loading {
+    text-align: center; 
+    font-size: 1.5em; 
+  }
+  
+  .error {
+    color: red; 
+    text-align: center; 
+    font-size: 1.2em; 
   }
   

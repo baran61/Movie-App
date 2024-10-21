@@ -1,48 +1,56 @@
-import React , {useEffect, useState} from 'react'
-import axios from 'axios'
-import './style.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom'; // Sayfa geçişleri için Link
+import './style.css';
 
 function MyMovies() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
 
-const[movies,setMovies] = useState([]);
-const[loading,setLoading]= useState();
-const[error,setError] = useState();
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get('http://localhost:5001/api/movies'); // API'den filmleri çek
+        setMovies(response.data);
+      } catch (err) {
+        setError('Filmler çekilirken hata oluştu!'); // Hata mesajı
+      } finally {
+        setLoading(false); // Yüklenme bitti
+      }
+    };
 
-useEffect(() => {
-  const fetchMovies = async () => {
-    setLoading(true); // Yükleniyor durumunu başlat
-    try {
-      const response = await axios.get('http://localhost:5001/api/movies'); // API'den filmleri çek
-      setMovies(response.data);
-    } catch (err) {
-      setError('Filmler çekilirken hata oluştu!'); // Hata durumunu ayarla
-    } finally {
-      setLoading(false); // Yükleniyor durumunu sona erdir
-    }
-  };
+    fetchMovies();
+  }, []);
 
-  fetchMovies();
-}, []);
-
-if (loading) return <div>Loading...</div>;
-if (error) return <div>{error}</div>;
+  if (loading) return <div className='loading'>Yükleniyor...</div>;
+  if (error) return <div className='error'>{error}</div>;
 
   return (
     <div className='movie-list'>
       {movies.map(movie => (
         <div className="movie-card" key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} // TMDB poster URL'si
-            alt={movie.title}
-            className="movie-poster"
-          />
-          <h3>{movie.title}</h3>
-          <p>Açıklama: {movie.overview}</p>
-          <p>Oy Ortalaması: {movie.vote_average} ({movie.vote_count} oy)</p>
+          {/* movie verisini state olarak ilet */}
+          <Link to={`/movie/${movie.id}`} state={{ movie }}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+              alt={movie.title}
+              className="movie-poster"
+            />
+          </Link>
+          <h3 className="movie-title">{movie.title}</h3>
+          <p className='release-date'>{movie.release_date}</p>
+          <p className="movie-rating">
+            Oy: 
+            {Array.from({ length: Math.round(movie.vote_average) }, (_, index) => (
+              <span key={index} className="material-icons star">star</span>
+            ))}
+            <span className="rating-count"> ({movie.vote_count} oy)</span>
+          </p>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default MyMovies
+export default MyMovies;
