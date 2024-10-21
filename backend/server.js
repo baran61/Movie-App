@@ -1,16 +1,21 @@
-const express = require('express')
-const dotenv = require('dotenv')
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
 const movieRoutes = require('./routes/movieRoutes');
 
-dotenv.config();   // .env dosyasından API anahtarını al
+dotenv.config(); // .env dosyasından API anahtarını al
 
-const app = express()
+const app = express();
 
 const PORT = process.env.PORT || 5001;
 
+// CORS ayarlarını buraya koy
+app.use(cors()); // Tüm originlerden gelen istekleri kabul et
+
+app.use(express.json()); // JSON gövdesini ayrıştırmak için middleware
+
 // Movie rotalarını kullan
 app.use('/api/movies', movieRoutes);
-
 
 // Server'ı başlat
 app.listen(PORT, () => {
