@@ -1,0 +1,39 @@
+.header{
+    display:flex;
+    align-items:center;
+    padding:10px;
+    background-color: wheat;
+    font-family: 'Arima';
+}
+
+.header img{
+    width:150px;
+    height:auto;
+    margin-right:50px;
+}
+
+.header h1{
+    font-size: 30px;
+    margin-left:100px;
+}
+
+.nav {
+    list-style: none;      /* Liste işaretlerini kaldırır */
+    display: flex;         /* Menüyü yatay hizalar */
+    margin: 20px;          /* Varsayılan boşlukları kaldırır */
+    padding: 10px;
+  }
+  
+  .nav li {
+    margin-left: 60px;     
+  }
+  
+  .nav li a {
+    text-decoration: none; 
+    color: black;          
+    font-size: 18px;       
+  }
+  
+  .nav li a:hover {
+    color: #555555;           
+  }
