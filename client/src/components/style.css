@@ -1,26 +1,29 @@
 /* Header Section */
+
 .header {
   display: flex;
-  justify-content: space-between; /* Header içindeki öğeleri yatayda yay */
   align-items: center;
-  padding: 20px 40px;
-  background-color: #2C3E50; /* Daha koyu bir arka plan */
+  height: 50px;
+  padding: 10px 20px; 
+  background-color: #192a56; 
   font-family: 'Arima';
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header img {
-  width: 120px;
+  width: 100px; 
   height: auto;
-  cursor: pointer; /* Logo üzerine gelince tıklanabilir olduğunu belirtir */
+  cursor: pointer;
+  transition: transform 0.3s ease; 
+  margin-right:10px;
 }
 
 .header h1 {
-  color: #bdcdd1; /* Açık bir yazı rengi */
-  font-size: 2rem;
-  letter-spacing: 2px; /* Harfler arası boşluk */
+  color: #f5f6fa; 
+  font-size: 1.5rem; 
+  letter-spacing: 1px;
   margin: 0;
-  
+  text-align: left; 
 }
 
 /* Navigation Bar */
@@ -29,91 +32,98 @@
   display: flex;
   margin: 0;
   padding: 0;
+  gap: 20px; 
+  text-align: left;
+  margin-left:700px;
 }
 
 .nav li {
-  position: relative; /* Dropdown menü için gerekli */
-  margin-left: 40px; /* Menü öğeleri arası boşluk */
+  position:relative; /* For dropdown positioning */
+  margin-left: 40px;
 }
 
 .nav li a {
   text-decoration: none;
-  color: #ECF0F1; /* Beyaz renkte yazı */
-  font-size: 1.1rem;
+  color: #f5f6fa; /* White text */
+  font-size: 1.2rem;
   font-weight: 500;
-  transition: color 0.3s ease; /* Hover geçişini daha yumuşak yapar */
+  transition: color 0.3s ease;
 }
 
 .nav li a:hover {
-  color: #F39C12; /* Turuncu hover efekti */
+  color: #fbc531; /* Gold hover effect similar to TMDb */
+}
+
+.header h1:hover{
+  color: #fbc531;
+  transform: scale(1.1);
 }
 
 /* Dropdown Menu for Kategori */
 .dropdown {
-  display: none; /* Varsayılan olarak gizle */
+  display:none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #34495E; /* Daha koyu bir arka plan */
+  top:100%;
+  left:-50%;
+  background-color: #273c75; /* Dark blue background for dropdown */
   list-style-type: none;
   padding: 10px 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Dropdown gölgesi */
-  border-radius: 4px; /* Hafif köşeleri yuvarla */
-  z-index: 1000; /* Üstte görünmesini sağla */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 1000;
 }
 
 .dropdown li {
   padding: 10px 20px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dropdown li a {
-  color: #ECF0F1;
+  color: #f5f6fa;
   font-size: 1rem;
   text-decoration: none;
   display: block;
   transition: background-color 0.3s ease;
+  text-align: center; 
+  width: 100%;
+  
 }
 
 .dropdown li a:hover {
-  background-color: #F39C12; /* Hover olduğunda turuncu */
-  color: white; /* Metin beyaz olmalı */
+  background-color: #fbc531;
+  color: white;
 }
 
-/* Kategori üzerine gelindiğinde dropdown menüyü göster */
+/* Show dropdown on hover */
 .nav li:hover .dropdown {
   display: block;
 }
 
-/* Movie Website metnini merkezle */
-.header h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #ECF0F1;
-  letter-spacing: 1px;
-}
-
-/* Logo hover efekti */
+/* Logo hover effect */
 .logo:hover {
-  transform: scale(1.10);
-  transition: transform 0.3s ease;
+  transform: scale(1.1);
 }
 
-/* Mobile friendly adjustments */
+/* Responsive styling for smaller screens */
 @media (max-width: 768px) {
   .header {
-      flex-direction: column; /* Header içindeki öğeleri dikey hizala */
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .nav {
-      margin-top: 10px;
-      flex-direction: column; /* Menüleri alt alta diz */
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .nav li {
-      margin: 10px 0; /* Menü öğeleri arasında daha fazla boşluk */
+    margin: 10px 0;
   }
 }
+
 
 /* Movie List Section */
 .movie-list {

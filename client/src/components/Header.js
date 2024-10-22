@@ -38,15 +38,15 @@ function Header() {
           <a href="/">Kategori</a>
           {showCategories && (
             <ul className="dropdown">
-              <li><a href="#">Aksiyon</a></li>
-              <li><a href="#">Komedi</a></li>
-              <li><a href="#">Dram</a></li>
-              <li><a href="#">Belgesel</a></li>
+              <li><a href="/">Aksiyon</a></li>
+              <li><a href="/">Komedi</a></li>
+              <li><a href="/">Dram</a></li>
+              <li><a href="/">Belgesel</a></li>
             </ul>
           )}
         </li>
-        <li><a href="#">Dizi</a></li>
-        <li><a href="#">Film</a></li>
+        <li><a href="/">Dizi</a></li>
+        <li><a href="/">Film</a></li>
         <li><a href="/register">Kayıt ol</a></li>
         <li><a href="/signup">Giriş yap </a></li>
       </ul>
