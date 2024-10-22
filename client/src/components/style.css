@@ -1,113 +1,328 @@
-.header{
-    display:flex;
-    align-items:center;
-    padding:10px;
-    background-color: wheat;
-    font-family: 'Arima';
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between; /* Header içindeki öğeleri yatayda yay */
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #2C3E50; /* Daha koyu bir arka plan */
+  font-family: 'Arima';
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
 }
 
-.header img{
-    width:150px;
-    height:auto;
-    margin-right:50px;
+.header img {
+  width: 120px;
+  height: auto;
+  cursor: pointer; /* Logo üzerine gelince tıklanabilir olduğunu belirtir */
 }
 
-.header h1{
-    font-size: 30px;
-    margin-left:100px;
+.header h1 {
+  color: #bdcdd1; /* Açık bir yazı rengi */
+  font-size: 2rem;
+  letter-spacing: 2px; /* Harfler arası boşluk */
+  margin: 0;
+  
 }
 
+/* Navigation Bar */
 .nav {
-    list-style: none;      /* Liste işaretlerini kaldırır */
-    display: flex;         /* Menüyü yatay hizalar */
-    margin: 20px;          /* Varsayılan boşlukları kaldırır */
-    padding: 10px;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  position: relative; /* Dropdown menü için gerekli */
+  margin-left: 40px; /* Menü öğeleri arası boşluk */
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #ECF0F1; /* Beyaz renkte yazı */
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease; /* Hover geçişini daha yumuşak yapar */
+}
+
+.nav li a:hover {
+  color: #F39C12; /* Turuncu hover efekti */
+}
+
+/* Dropdown Menu for Kategori */
+.dropdown {
+  display: none; /* Varsayılan olarak gizle */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #34495E; /* Daha koyu bir arka plan */
+  list-style-type: none;
+  padding: 10px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Dropdown gölgesi */
+  border-radius: 4px; /* Hafif köşeleri yuvarla */
+  z-index: 1000; /* Üstte görünmesini sağla */
+}
+
+.dropdown li {
+  padding: 10px 20px;
+}
+
+.dropdown li a {
+  color: #ECF0F1;
+  font-size: 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown li a:hover {
+  background-color: #F39C12; /* Hover olduğunda turuncu */
+  color: white; /* Metin beyaz olmalı */
+}
+
+/* Kategori üzerine gelindiğinde dropdown menüyü göster */
+.nav li:hover .dropdown {
+  display: block;
+}
+
+/* Movie Website metnini merkezle */
+.header h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ECF0F1;
+  letter-spacing: 1px;
+}
+
+/* Logo hover efekti */
+.logo:hover {
+  transform: scale(1.10);
+  transition: transform 0.3s ease;
+}
+
+/* Mobile friendly adjustments */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column; /* Header içindeki öğeleri dikey hizala */
+      text-align: center;
   }
-  
+
+  .nav {
+      margin-top: 10px;
+      flex-direction: column; /* Menüleri alt alta diz */
+  }
+
   .nav li {
-    margin-left: 60px;     
+      margin: 10px 0; /* Menü öğeleri arasında daha fazla boşluk */
   }
-  
-  .nav li a {
-    text-decoration: none; 
-    color: black;          
-    font-size: 18px;       
-  }
-  
-  .nav li a:hover {
-    color: #555555;           
+}
+
+/* Movie List Section */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.movie-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /*  gölge efekti */
+  overflow: hidden; 
+  transition: transform 0.3s; 
+  width: 300px; /* Kart genişliği */
+}
+
+.movie-card:hover {
+  transform: scale(1.05); 
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto; 
+  border-bottom: 2px solid #e0e0e0; /* Alt çizgi ekle */
+}
+
+.movie-title {
+  font-size: 1.2em; 
+  margin: 10px 0;
+  text-align: center; 
+  color: #333; 
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center; /* Yıldız ve sayıların hizalanmasını ayarla */
+  justify-content: center; /* Ortala */
+  font-size: 0.7em; /* Yazı boyutu */
+  padding: 0 10px; /* Yan boşluk */
+  color: #ffffff; /* Yazı rengi */
+}
+
+.star {
+  color: gold; /* Yıldızların rengi */
+  margin: 0 2px; /* Yıldızlar arası boşluk */
+  font-size: 2em;
+}
+.relase-date{
+  font-size: 0.9em; 
+  margin: 10px 0;
+  text-align: center; 
+  color: #545353; 
+}
+
+.rating-count {
+  margin-left: 5px; /* Sayının yıldızdan sonra boşluk bırakması için */
+}
+
+
+.loading {
+  text-align: center; 
+  font-size: 1.5em; 
+}
+
+.error {
+  color: red; 
+  text-align: center; 
+  font-size: 1.2em; 
+}
+
+/* Movie Detail Page */
+
+/* Movie Detail Container */
+.movie-detail {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 40px auto;
+  position: relative; /* Başlığın konumunu ayarlamak için */
+}
+
+/* Poster Stil */
+.movie-detail img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 40px;
+  position: relative;
+  z-index: 1; /* Resim önde kalacak şekilde z-index ayarlandı */
+}
+
+/* Film Bilgileri */
+.movie-detail p {
+  font-size: 1.2rem;
+  color: #34495E;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.movie-detail p:first-of-type {
+  margin-bottom: 20px;
+}
+
+
+.release-info {
+  margin-top: 20px; 
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .movie-detail {
+      flex-direction: column;
+      text-align: center;
   }
 
-  /* Movie Listeleme için css */
-  
-  .movie-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px; /* Kartlar arasındaki boşluk */
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .movie-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /*  gölge efekti */
-    overflow: hidden; 
-    transition: transform 0.3s; 
-    width: 300px; /* Kart genişliği */
-  }
-  
-  .movie-card:hover {
-    transform: scale(1.05); 
-  }
-  
-  .movie-poster {
-    width: 100%;
-    height: auto; 
-    border-bottom: 2px solid #e0e0e0; /* Alt çizgi ekle */
-  }
-  
-  .movie-title {
-    font-size: 1.2em; 
-    margin: 10px 0;
-    text-align: center; 
-    color: #333; 
-  }
-  
-  .movie-rating {
-    display: flex;
-    align-items: center; /* Yıldız ve sayıların hizalanmasını ayarla */
-    justify-content: center; /* Ortala */
-    font-size: 0.7em; /* Yazı boyutu */
-    padding: 0 10px; /* Yan boşluk */
-    color: #555; /* Yazı rengi */
-  }
-  
-  .star {
-    color: gold; /* Yıldızların rengi */
-    margin: 0 2px; /* Yıldızlar arası boşluk */
-    font-size: 2em;
-  }
-  .relase-date{
-    font-size: 0.9em; 
-    margin: 10px 0;
-    text-align: center; 
-    color: #545353; 
+  .movie-detail img {
+      margin: 0 auto 20px;
   }
 
-  .rating-count {
-    margin-left: 5px; /* Sayının yıldızdan sonra boşluk bırakması için */
+  .movie-title-overlay {
+      top: 10px;
+      left: 10px;
+      font-size: 2rem;
   }
-  
-  
-  .loading {
-    text-align: center; 
-    font-size: 1.5em; 
+}
+/* Register Page - Sign up Page */
+
+/* Register Page - Sign up Page */
+.register-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  margin: 40px auto; /* Ortada görünmesi için üst ve alt boşluk ekle */
+}
+.signin-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  margin: 40px auto; /* Ortada görünmesi için üst ve alt boşluk ekle */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: #ffffff; /* Yazı rengi beyaz olmalı */
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.icon-button:hover {
+  background-color: #0056b3;
+}
+
+.material-icons {
+  margin-left: 5px;
+}
+
+/* Mobile friendly adjustments */
+@media (max-width: 768px) {
+  .register-container {
+      width: 90%; /* Mobilde genişliği artır */
+      padding: 15px; /* İç boşluğu azalt */
   }
-  
-  .error {
-    color: red; 
-    text-align: center; 
-    font-size: 1.2em; 
-  }
-  
+}
