@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
-import Signin from '../components/Signin'
+import Login from '../components/Login'
 function SignupPage() {
   return (
     <div>
       <Header/>
-      <Signin/>
+      <Login/>
     </div>
   )
 }

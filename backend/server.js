@@ -22,7 +22,7 @@ const corsOptions = {
   origin: 'http://localhost:3000', // Sadece React uygulamasına izin ver
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // İzin verilen HTTP metodları
   allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
-  credentials: true, // Eğer kimlik doğrulaması gerekiyorsa
+  //credentials: true, // Eğer kimlik doğrulaması gerekiyorsa
 };
 
 app.use(cors(corsOptions)); // CORS middleware'ini uygulamaya dahil et

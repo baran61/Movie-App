@@ -48,7 +48,7 @@ function Header() {
         <li><a href="/">Dizi</a></li>
         <li><a href="/">Film</a></li>
         <li><a href="/register">Kayıt ol</a></li>
-        <li><a href="/signup">Giriş yap </a></li>
+        <li><a href="/login">Giriş yap </a></li>
       </ul>
 
     </header>
