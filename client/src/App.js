@@ -13,6 +13,7 @@ function App() {
           <Route path="/movie/:id" element={<Detail />} />
           <Route path="/login" element={<SigninPage/>} />
           <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/:userId" element={<HomePage/>}  />
         </Routes>
       </Router>
     </div>
