@@ -1,24 +1,23 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-function Login() {
-  const[formData,setFormData] = useState({
-    email:'',
-    password:''
-
-  })
-  const[error,setError] = useState('');
-  const[success,setSuccess] = useState('');
+function Login({ onLogin }) {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const navigate = useNavigate();
 
-  const handleChange = ({target: {name , value} }) => {
+  const handleChange = ({ target: { name, value } }) => {
     setFormData((prevData) => ({
       ...prevData,
-      [name]:value,
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,23 +32,25 @@ function Login() {
       });
 
       const data = await response.json();
+      console.log(data); // Yanıtı konsola yazdır
 
       if (response.ok) {
-        localStorage.setItem('token', data.token);        // Token'ı local storage'a kaydet
-        setSuccess('Giriş başarılı!');                    // Başarılı giriş mesajı
+        // Yanıtı kontrol edin
+        console.log(data); // API'den gelen veriyi kontrol et
+
+        // Token ve kullanıcı bilgilerini localStorage'a kaydedin
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify({ id: data.user.id, name: data.user.username }));
+
+        setSuccess('Giriş başarılı!');
         setError('');
 
-        // Kullanıcının id'sini token'dan decode ederek alabiliriz
-        const decodedToken = JSON.parse(atob(data.token.split('.')[1])); // JWT decode işlemi
-        const userId = decodedToken.user.id;
+        // Kullanıcı bilgilerini App.js'e gönder
+        onLogin({ id: data.user.id, name: data.user.username });
 
-        // Yönlendirme işlemi: ana sayfaya ve kullanıcıya özel sayfaya git
-        navigate(`/${userId}`);                           // `/dashboard/{userId}` rotasına yönlendir
-
-        setFormData({ email: '', password: '' });         // Formu sıfırla
-        console.log("Kullanıcı başarılı bir şekilde giriş yaptı!");
-
+        navigate('/');  // Ana sayfaya yönlendir
       } else {
+        // Hata mesajını güncelle
         setError(data.msg || 'Giriş işlemi başarısız');
         setSuccess('');
       }
@@ -65,27 +66,27 @@ function Login() {
       <form className='form' onSubmit={handleSubmit}>
         <div className='input-group'>
           <label>E-posta:</label>
-          <input 
-            type='email' 
+          <input
+            type='email'
             name='email'
             placeholder='E-Posta'
-            value={formData.email} 
+            value={formData.email}
             onChange={handleChange}
-            required 
-            />
+            required
+          />
         </div>
         <div className='input-group'>
           <label>Şifre:</label>
-          <input 
+          <input
             type='password'
-            name='password' 
+            name='password'
             value={formData.password}
             onChange={handleChange}
-            placeholder='Şifre' 
-            required 
-            />
+            placeholder='Şifre'
+            required
+          />
         </div>
-        <button className='icon-button'>
+        <button type="submit" className='icon-button'>
           <span>Giriş yap</span>
           <span className='material-icons'>check_circle</span>
         </button>
@@ -93,7 +94,7 @@ function Login() {
       {success && <p className='success-message'>{success}</p>}
       {error && <p className='error-message'>{error}</p>}
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

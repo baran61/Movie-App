@@ -1,29 +1,28 @@
 /* Header Section */
-
 .header {
   display: flex;
   align-items: center;
-  height: 50px;
-  padding: 10px 20px; 
-  background-color: #192a56; 
-  font-family: 'Arima';
+  height: 60px;
+  padding: 10px 20px;
+  background-color: #192a56;
+  font-family: 'Arima', sans-serif;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header img {
-  width: 100px; 
+  width: 100px;
   height: auto;
   cursor: pointer;
-  transition: transform 0.3s ease; 
-  margin-right:10px;
+  transition: transform 0.3s ease;
+  margin-right: 10px;
 }
 
 .header h1 {
-  color: #f5f6fa; 
-  font-size: 1.5rem; 
+  color: #f5f6fa;
+  font-size: 1.5rem;
   letter-spacing: 1px;
   margin: 0;
-  text-align: left; 
+  text-align: left;
 }
 
 /* Navigation Bar */
@@ -32,40 +31,39 @@
   display: flex;
   margin: 0;
   padding: 0;
-  gap: 20px; 
-  text-align: left;
-  margin-left:700px;
+  gap: 20px;
+  margin-left: auto;
+  align-items: center;
 }
 
 .nav li {
-  position:relative; /* For dropdown positioning */
-  margin-left: 40px;
+  position: relative;
 }
 
 .nav li a {
   text-decoration: none;
-  color: #f5f6fa; /* White text */
+  color: #f5f6fa;
   font-size: 1.2rem;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .nav li a:hover {
-  color: #fbc531; /* Gold hover effect similar to TMDb */
+  color: #fbc531;
 }
 
-.header h1:hover{
+.header h1:hover {
   color: #fbc531;
   transform: scale(1.1);
 }
 
 /* Dropdown Menu for Kategori */
 .dropdown {
-  display:none;
+  display: none;
   position: absolute;
-  top:100%;
-  left:-50%;
-  background-color: #273c75; /* Dark blue background for dropdown */
+  top: 100%;
+  left: -50%;
+  background-color: #273c75;
   list-style-type: none;
   padding: 10px 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -75,20 +73,14 @@
 
 .dropdown li {
   padding: 10px 20px;
-  display:flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 .dropdown li a {
   color: #f5f6fa;
   font-size: 1rem;
   text-decoration: none;
-  display: block;
   transition: background-color 0.3s ease;
-  text-align: center; 
-  width: 100%;
-  
 }
 
 .dropdown li a:hover {
@@ -106,6 +98,30 @@
   transform: scale(1.1);
 }
 
+/* Logout Button */
+.icon-button {
+  background: none;
+  border: none;
+  color: #f5f6fa;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+/* Welcome Message */
+.welcome-message {
+  color: #fbc531;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.icon-button:hover {
+  color: #fbc531;
+}
+
 /* Responsive styling for smaller screens */
 @media (max-width: 768px) {
   .header {
@@ -114,16 +130,15 @@
   }
 
   .nav {
-    margin-top: 10px;
     flex-direction: column;
     gap: 10px;
+    margin-top: 10px;
   }
 
   .nav li {
     margin: 10px 0;
   }
 }
-
 
 /* Movie List Section */
 .movie-list {
