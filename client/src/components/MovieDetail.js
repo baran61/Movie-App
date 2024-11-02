@@ -1,9 +1,30 @@
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './style.css';
 
 function MovieDetail() {
-    const location = useLocation();
-    const { movie } = location.state; // MyMovies'ten gelen movie verisi
+  const [favorite, setFavorite] = useState(() => {
+    // Retrieve from local storage on initial load
+    const savedFavorites = localStorage.getItem('favorites');
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  const location = useLocation();
+  const { movie } = location.state; // MyMovies'ten gelen movie verisi
+
+  const handleSubmit = () => {
+    // Check if the movie is already in favorites
+    const isFavorite = favorite.some((favMovie) => favMovie.id === movie.id);
+
+    if (!isFavorite) {
+      const updatedFavorites = [...favorite, movie];
+      setFavorite(updatedFavorites);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } else {
+      alert("This movie is already in your favorites!");
+    }
+  };
+
   return (
     <div>
       {movie ? (
@@ -18,9 +39,9 @@ function MovieDetail() {
             <div className="release-info">
               <p>Yayın Tarihi: {movie.release_date}</p>
               <p>Oy: {movie.vote_average} ({movie.vote_count} oy)</p>
-              <p>Add Favorite !</p>
-              <button class="icon-button">
-                <span class="material-icons">star</span>
+              <p>Add Favorite!</p>
+              <button className="icon-button" onClick={handleSubmit}>
+                <span className="material-icons">star</span>
               </button>
             </div>
           </div>

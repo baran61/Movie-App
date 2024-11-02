@@ -6,6 +6,7 @@ import Detail from './pages/Detail';
 import Login from './components/Login'
 import RegisterPage from './pages/RegisterPage';
 import Header from './components/Header';
+import Favorite from './components/Favorite';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/:userId" element={<HomePage user={user} />} />
+          <Route path='/favorite' element={<Favorite/>} />
         </Routes>
       </Router>
     </div>

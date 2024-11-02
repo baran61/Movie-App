@@ -42,11 +42,11 @@ function Header({ user, onLogout }) {
             </ul>
           )}
         </li>
-        <li><Link to="/">Dizi</Link></li>
         <li><Link to="/">Film</Link></li>
 
         {user ? (
           <>
+            <li><Link to="/favorite">Favoriler </Link></li>
             <li className="welcome-message">{user.name}</li>
             <li><Link to="/profile">Profil</Link></li>
             <button className='icon-button' type='button' onClick={onLogout}>

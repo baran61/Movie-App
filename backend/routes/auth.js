@@ -7,28 +7,28 @@ const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
-// Kayıt olma route'u
 router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
-  
-    try {
-      // Yeni kullanıcı oluşturma
-      const newUser = new User({
-        username,
-        email,
-        password,
-      });
-  
-      // Kullanıcıyı MongoDB'ye kaydetme
-      await newUser.save();
-      res.status(201).json({ message: 'Kullanıcı başarıyla kaydedildi' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Kayıt işlemi başarısız' });
-    }
-  });
+  const { username, email, password } = req.body;
 
-//Login route'u
+  try {
+    // Şifreyi hash'le
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Yeni kullanıcı oluştur
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword, // Hash'lenmiş şifreyi kaydet
+    });
+
+    // Veritabanına kaydet
+    await newUser.save();
+
+    res.status(201).json({ message: 'Kullanıcı başarılı bir şekilde kayıt edildi!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Kayıt işlemi sırasında bir hata oluştu.' });
+  }
+});
 
 // Login route'u
 router.post(
