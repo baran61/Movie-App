@@ -8,7 +8,7 @@ Frontend'i çalıştırmak için
 
 Backend'i çalıştırmak için
 
-![](/client/public/images/resim1.png)
-![](/client/public/images/resim2.png)
-![](/client/public/images/resim3.png)
-![](/client/public/images/resim4.png)
+![Ana Ekran](/client/public/images/resim1.png)
+![Kullanıcı Kayıt Platformu](/client/public/images/resim2.png)
+![Kullanıcı Giriş Platformu](/client/public/images/resim3.png)
+![Giriş yapan kullanıcı, favoriler sekmesi](/client/public/images/resim4.png)
