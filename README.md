@@ -12,3 +12,4 @@ Backend'i çalıştırmak için
 ![Kullanıcı Kayıt Platformu](/client/public/images/resim2.png)
 ![Kullanıcı Giriş Platformu](/client/public/images/resim3.png)
 ![Giriş yapan kullanıcı, favoriler sekmesi](/client/public/images/resim4.png)
+![Database](/client/public/images/resim5.png)
