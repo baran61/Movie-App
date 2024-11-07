@@ -271,7 +271,42 @@
       font-size: 2rem;
   }
 }
-/* Register Page - Sign up Page */
+/* Pagination butonları */
+.icon-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.icon-buttons button {
+  background-color: #007bff; /* Mavi arka plan rengi */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-buttons button:disabled {
+  background-color: #ddd; /* Devre dışı butonlar için gri arka plan */
+  cursor: not-allowed; /* Devre dışı buton için farklı cursor */
+}
+
+.icon-buttons button:hover:not(:disabled) {
+  background-color: #0056b3; /* Hover efekti */
+}
+
+.icon-buttons span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
 
 /* Register Page - Sign up Page */
 .register-container {

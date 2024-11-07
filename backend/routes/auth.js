@@ -11,24 +11,17 @@ router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Şifreyi hash'le
     const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
 
-    // Yeni kullanıcı oluştur
-    const newUser = new User({
-      username,
-      email,
-      password: hashedPassword, // Hash'lenmiş şifreyi kaydet
-    });
-
-    // Veritabanına kaydet
     await newUser.save();
-
     res.status(201).json({ message: 'Kullanıcı başarılı bir şekilde kayıt edildi!' });
   } catch (error) {
+    console.error("Registration error:", error); // Hata loglama
     res.status(500).json({ error: 'Kayıt işlemi sırasında bir hata oluştu.' });
   }
 });
+
 
 // Login route'u
 router.post(
